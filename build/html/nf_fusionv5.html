@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nextflow Fusion V5 pipeline handover &mdash; fusion_handover  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            fusion_handover
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Nextflow Fusion V5 pipeline handover</a><ul>
+<li><a class="reference internal" href="#purpose">Purpose</a></li>
+<li><a class="reference internal" href="#repo">Repo</a></li>
+<li><a class="reference internal" href="#docker-image">Docker Image</a></li>
+<li><a class="reference internal" href="#others-materials">Others materials</a></li>
+<li><a class="reference internal" href="#files">Files</a><ul>
+<li><a class="reference internal" href="#processes">Processes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#prepare-params-file">Prepare params file</a></li>
+<li><a class="reference internal" href="#configs-fields">Configs fields</a></li>
+<li><a class="reference internal" href="#execution">Execution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">fusion_handover</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Nextflow Fusion V5 pipeline handover</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/nf_fusionv5.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="nextflow-fusion-v5-pipeline-handover">
+<h1>Nextflow Fusion V5 pipeline handover<a class="headerlink" href="#nextflow-fusion-v5-pipeline-handover" title="Permalink to this heading"></a></h1>
+<section id="purpose">
+<h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this heading"></a></h2>
+<p>This document records pipeline description, installation and execution</p>
+</section>
+<hr class="docutils" />
+<section id="repo">
+<h2>Repo<a class="headerlink" href="#repo" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><cite>Nextflow Fusion V5 pipeline &lt;https://github.com/ACTGenomics/hybridcapture_fusion_pipeline_nextflow&gt;</cite></p></li>
+<li><p><cite>Docker image construction for Fusion V4-based nextflow pipeline &lt;https://github.com/ACTGenomics/Torrent_FUSION_calling.git&gt;</cite></p></li>
+<li><p><cite>Docker image construction for Arriba-based nextflow pipeline &lt;https://github.com/ACTGenomics/fusion_pipeline_env&gt;</cite></p></li>
+</ul>
+</section>
+<section id="docker-image">
+<h2>Docker Image<a class="headerlink" href="#docker-image" title="Permalink to this heading"></a></h2>
+<p>Stable version for Fusion V4-based pipeline: <a class="reference external" href="https://hub.docker.com/repository/docker/actgenomics/torrent_fusion_pipeline/general">v0.23.0</a>
+Stable version for Arriba-based pipeline: <a class="reference external" href="https://hub.docker.com/repository/docker/actgenomics/fusion_dev/general">v0.5</a></p>
+</section>
+<section id="others-materials">
+<h2>Others materials<a class="headerlink" href="#others-materials" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Dev. environment: <a class="reference external" href="https://actg.atlassian.net/browse/ABIE-993">Fusion dev. environment development &lt;https://actg.atlassian.net/browse/ABIE-977&gt;; Dev. image sumamry</a></p></li>
+<li><p>Comparison study - Caller evalutaion: <a href="#id1"><span class="problematic" id="id2">`</span></a>Workflow comparison study &lt;<a class="reference external" href="https://actg.atlassian.net/browse/ABIE-907">https://actg.atlassian.net/browse/ABIE-907</a>&gt;; <a href="#id3"><span class="problematic" id="id4">`</span></a>_</p></li>
+<li><p>Design document - Fusion V4: <a class="reference external" href="https://actgenomics-my.sharepoint.com/:p:/p/yufenghuang/ETgxdTAFgUNLpYgrhERNdbMBU8HbGUqji5q6WKK-UmKrlQ?e=coyvwP">20240109_actfusion_v4_amplicon_workflow_ST.v0.28.0.pptx</a></p></li>
+<li><p>Dev. documents and records - Fusion V4: <a class="reference external" href="https://actgenomics-my.sharepoint.com/:f:/p/yufenghuang/Eif-bxfsRuhNux2LYcluv7IBs0WAkjKUioDo8mivXrKljQ?e=bCIrwt">V4_Final</a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="files">
+<h2>Files<a class="headerlink" href="#files" title="Permalink to this heading"></a></h2>
+<p>These refers to the files found in the <cite>hybridcapture_fusion_pipeline_nextflow</cite> repo</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>Workflow files</strong>:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">hybridcapture_fusion_pipeline_nextflow/Workflow_docker_arriba.nf</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hybridcapture_fusion_pipeline_nextflow/Workflow_docker_illumina.nf</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Modules</strong>:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">hybridcapture_fusion_pipeline_nextflow/modules/modules.nf</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hybridcapture_fusion_pipeline_nextflow/modules/k8s_modules.nf</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hybridcapture_fusion_pipeline_nextflow/modules/SampleInfo_k8s_illumina.nf</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Configs</strong>:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">hybridcapture_fusion_pipeline_nextflow/dockerconfigs/arriba_localdocker.config</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hybridcapture_fusion_pipeline_nextflow/dockerconfigs/fusion_multi_localdocker.v9.20241125.v0.23.0.config</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Test params files</strong>:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">hybridcapture_fusion_pipeline_nextflow/params/IVTALL-1_arriba_test.json</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hybridcapture_fusion_pipeline_nextflow/params/fus_illumina_fastq.json</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<section id="processes">
+<h3>Processes<a class="headerlink" href="#processes" title="Permalink to this heading"></a></h3>
+<p>These processes are components of the Fusion V5 Fusion V4-based pipeline</p>
+<ul class="simple">
+<li><p><strong>mergefastq</strong>: Merge the two input paired-end fastq files via fastp</p></li>
+<li><p><strong>trimadap</strong>: Perform sequencing adapter trimming on the merged fastq file by trimadap</p></li>
+<li><p><strong>fastp</strong>: Perform sequencing reads filtering - discard reads with poor sequencing quality via fastp</p></li>
+<li><p><strong>bwa_isoform</strong>: Perform isoform alignment for each merged read against the fusion target genes - this process is aimed to remove the reads that are highly similar to the sequences stored in the isoform database and can be skipped by adjusting the ‘isoformfilteringflag’ to 0 in the pipeline configuration file</p></li>
+<li><p><strong>bwa_se</strong>: Perform preferred transcriptome, preferred transcriptome with 10*N as intron sequences, alignment for each read</p></li>
+<li><p><strong>fusioncalling</strong>: Classify each aligned read generated by the bwa_se process to different fusion types</p></li>
+<li><p><strong>fuscall2QC_illumina</strong>: Perform calling summary on the _callingresult.txt file generated by the fusioncalling process - output fusion summary file for clinical report {sampleName}_fusioncalling.boundary.QC.txt - will be stored in the ‘Report’ folder</p></li>
+</ul>
+<p>These processes are components of the Fusion V5 Arriba-based pipeline</p>
+<ul class="simple">
+<li><p><strong>STAR_ALIGN</strong>: Generates STAR alignments for the input paired-end reads - the STAR paramters are recommended by the arriba caller</p></li>
+<li><p><strong>ARRIBA_CALL</strong>: Perform fusion calling - parse the {sampleName}.Aligned.out.bam file and generate the two output files - {sampleName}.fusions.tsv &amp; {sampleName}.fusions.discarded.tsv</p></li>
+<li><p><strong>SORT_INDEX_BAM</strong>: Sort the STAR alignments and index the coordinate-sorted bam - alignments preprocessing for further analysis</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="prepare-params-file">
+<h2>Prepare params file<a class="headerlink" href="#prepare-params-file" title="Permalink to this heading"></a></h2>
+<p>A custom script generate different types of params file, given the UUID and workflow type.
+A custom script to generate fusionv5.params.json, given the sample.info.csv, fastq directory, pu</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The script generate paths from production volumes, therefore the samples should already been processed by legacy pipeline.</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 /mnt/RD_Develop/sandyteng/ACTFusionV5/code/illumina_samplefilelist_csv.py \</span>
+<span class="go">    --csv &quot;/mnt/RD_Develop/sandyteng/ACTFusionV5/nextflow/sample_info_AD/250509_NB552005_0507 ACTFusion v5 Probe feasibility test 2 condition.ST.csv&quot; \</span>
+<span class="go">    --fastq_dir /mnt/RD_Result/2025-05-12_ABIE-1022/BCL2FASTQ/AANB01_507/ \</span>
+<span class="go">    --publish_dir /mnt/RD_Develop/sandyteng/ACTFusionV5/nextflow_outdir/AANB01_507/ \</span>
+<span class="go">    --json_out fusionv5.params.json \</span>
+<span class="go">    --runname AANB01_507</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="configs-fields">
+<h2>Configs fields<a class="headerlink" href="#configs-fields" title="Permalink to this heading"></a></h2>
+<p>The config fields for the Fusion V4-based workflow</p>
+<ul class="simple">
+<li><p><strong>refFile</strong>: Fasta of the preferred transcripts (pseudo 10*N =&gt; intron) (MANE v0.95 + GENCODE-r38)</p></li>
+<li><p><strong>ambFile</strong>: bwa index file (.amb file) derived from refFile</p></li>
+<li><p><strong>annFile</strong>: bwa index file (.ann file) derived from refFile</p></li>
+<li><p><strong>bwtFile</strong>: bwa index file (.bwt file) derived from refFile</p></li>
+<li><p><strong>pacFile</strong>: bwa index file (.pac file) derived from refFile</p></li>
+<li><p><strong>saFile</strong>: bwa index file (.sa file) derived from refFile</p></li>
+<li><p><strong>annoFile</strong>: The annotation file derived from refFile and primerlabelFile</p></li>
+<li><p><strong>gannoFile</strong>: The annotation file derived from GENCODE-r38</p></li>
+<li><p><strong>isoformfaFile</strong>: Fasta of the isoforms of the 26 target genes (RefSeq + GENCODE-r38)</p></li>
+<li><p><strong>isoformambFile</strong>: bwa index file (.amb file) derived from isoformfaFile</p></li>
+<li><p><strong>isoformannFile</strong>: bwa index file (.ann file) derived from isoformfaFile</p></li>
+<li><p><strong>isoformbwtFile</strong>: bwa index file (.bwt file) derived from isoformfaFile</p></li>
+<li><p><strong>isoformpacFile</strong>: bwa index file (.pac file) derived from isoformfaFile</p></li>
+<li><p><strong>isoformsaFile</strong>: bwa index file (.sa file) derived from isoformfaFile</p></li>
+<li><p><strong>isoformmetaFile</strong>: The annotation file derived from isoformfaFile</p></li>
+<li><p><strong>isoformfilteringflag</strong>: isoform filtering step switch (1: enable filtering, 0: disable filtering) (process “bwaisoform”)</p></li>
+<li><p><strong>truncatedmode</strong>: truncated mode for funcational count summary (process “fuscall2QC_illumina”)</p></li>
+<li><p><strong>truncatedseq_min_aligned_len</strong>: minimum aligned length for the truncated sequence (default = 12 a.a.) (process “fuscall2QC”)</p></li>
+<li><p><strong>inSpikeinFastqR1</strong>: spike-in sequence to prevent pipeline termination (process “mergefastq”/”bam2fastq”)</p></li>
+<li><p><strong>pdbFile</strong>: 26 protein sequences (fasta) of the corresponding target transcripts</p></li>
+<li><p><strong>pdbmFile</strong>: The ENST ID to UniProt ID map for pdbFile</p></li>
+<li><p><strong>adapFile</strong>: adapter sequence to trim (for universal primer removal) (process “trimadap”)</p></li>
+<li><p><strong>qcconfigFile</strong>: Adjustable QC settings (default settings designed for amplicon based assay)</p></li>
+<li><p><strong>readqcconfigFile</strong>: Adjustable QC settings (default settings designed for amplicon based assay)</p></li>
+<li><p><strong>primerlabelFile</strong>: the designed primer region and the corresponding meta data</p></li>
+<li><p><strong>incqctemplateFile</strong>: Adjustable QC settings (default settings designed for amplicon based assay)</p></li>
+<li><p><strong>boundaryqcFile</strong>: Adjustable QC settings (default settings designed for amplicon based assay)</p></li>
+<li><p><strong>fusion_container</strong>: latest pipeline image (actgenomics/torrent_fusion_pipeline:v0.23.0)</p></li>
+</ul>
+<p>The config fields for the Arriba-based workflow</p>
+<ul class="simple">
+<li><p><strong>fusion_container</strong>: latest pipeline image (actgenomics/fusion_dev:v0.5)</p></li>
+<li><p><strong>star_index_dir</strong>: the folder containing pregenerated STAR index files (GRCh38+RefSeq)</p></li>
+<li><p><strong>annotation_gtf</strong>: the gtf file for fusion breakpoint annotation (GRCh38+RefSeq)</p></li>
+<li><p><strong>assembly_fa</strong>: the genome sequence provided by arriba’s repo (GRCh38)</p></li>
+<li><p><strong>blacklist_tsv</strong>: the blacklist curated by arriba (GRCh38)</p></li>
+<li><p><strong>known_fusions_tsv</strong>: the known fusions curated by arriba (GRCh38)</p></li>
+<li><p><strong>protein_domains_gff3</strong>: the protein domain file curated by arriba (GRCh38)</p></li>
+</ul>
+<p>Remark:
+- Arriba reference files download</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">#</span> <span class="pre">public</span> <span class="pre">image</span> <span class="pre">for</span> <span class="pre">arriba</span> <span class="pre">workflow</span> <span class="pre">(https://hub.docker.com/r/uhrigs/arriba/tags)</span>
+<span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">uhrigs/arriba:2.4.0</span>
+<span class="pre">#</span> <span class="pre">download</span> <span class="pre">reference</span> <span class="pre">&quot;GRCh38+RefSeq&quot;</span> <span class="pre">(local</span> <span class="pre">directory:</span> <span class="pre">/mnt/RD_Develop/sandyteng/FusionCaptureTools/refdb_arriba/)</span>
+<span class="pre">docker</span> <span class="pre">run</span> <span class="pre">--rm</span> <span class="pre">-v</span> <span class="pre">/mnt/RD_Develop/sandyteng/FusionCaptureTools/refdb_arriba/:/references</span> <span class="pre">uhrigs/arriba:2.4.0</span> <span class="pre">download_references.sh</span> <span class="pre">GRCh38+RefSeq</span>
+<span class="pre">`</span></code></p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="execution">
+<h2>Execution<a class="headerlink" href="#execution" title="Permalink to this heading"></a></h2>
+<p>Server should already have native nextflow installed, if not uses conda to create a Nextflow run environment</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, sandyteng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
