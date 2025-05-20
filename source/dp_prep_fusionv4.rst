@@ -151,26 +151,33 @@ Config Files
 ----------------------
 Area for improvements
 ----------------------
-- **DB-update (Remaining tasks)**
-    - V0.95 Probe annotation 
-        -   Concept
-            -   Map 1039 probe regions to v0.95 pseudo transcriptome (Fusion V4 transcriptome)
-        -   Implementation 
-            -   Modify Steps 8-0-a to 8-0-c (loci file annotation), follow the “Fusion db_prep.steps_db-v3.1.docx” (ABIE-1012)
 
-    - V1.4 Kinase file check (update current DB-v3.1 to DB-v3.2)
-        -   Concept
-            -   Check 26 MANE Select v1.4 transcripts to protein sequences mapping  (Bug: BRAF; db-v3.1 current include 'MANE v1.4 Plus clinical (== MANE v0.95 MANE Select)' BRAF ('ENST00000644969.2'), need to replace it with the 'MANE v1.4 Select' transcript: 'ENST00000646891.2')
-        -   Implementation
-            -   Review the 26 kinase sequences (transcript id, protein id) manually curated in step 10 in `My PDF Guide <_static/Fusion_db_prep.steps_db-v3.1.pdf>`_
-    
-    - V1.4 Whitelist update
-        - Concept
-            -   Update whitelist: (modify the probe pair configuration file)
-                -   AR:2,3,4 (v0.95 MANE Select) to AR:2,3 (v1.4 MANE Select) 
-                -   BRAF:19-BRAF:11 (v0.95 MANE Select) BRAF:18-BRAF:10 (v1.4 MANE Select)
-        - Implementation
-            -   Review step 11 in `My PDF Guide <_static/Fusion_db_prep.steps_db-v3.1.pdf>`_
+DB-update (Remaining tasks)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 30 50
+
+   * - Task
+     - Concept
+     - Implementation
+
+   * - V0.95 Probe annotation
+     - Map 1039 probe regions to v0.95 pseudo transcriptome (Fusion V4 transcriptome)
+     - Modify Steps 8-0-a to 8-0-c (loci file annotation), follow the “Fusion db_prep.steps_db-v3.1.docx” (ABIE-1012)
+
+   * - V1.4 Kinase file check (update DB-v3.1 to DB-v3.2)
+     - Check 26 MANE Select v1.4 transcripts to protein sequences mapping  
+       
+       Bug: BRAF in db-v3.1 uses "MANE v1.4 Plus clinical" (`ENST00000644969.2`) instead of correct "MANE v1.4 Select" (`ENST00000646891.2`)
+     - Review the 26 kinase sequences (transcript ID, protein ID) manually curated in step 10 of `My PDF Guide <_static/Fusion_db_prep.steps_db-v3.1.pdf>`_
+
+   * - V1.4 Whitelist update
+     - Modify probe pair configuration:
+       • AR:2,3,4 → AR:2,3  
+       • BRAF:19-BRAF:11 → BRAF:18-BRAF:10
+     - Review step 11 in `My PDF Guide <_static/Fusion_db_prep.steps_db-v3.1.pdf>`_
 
 --------------------
 Conclusion
