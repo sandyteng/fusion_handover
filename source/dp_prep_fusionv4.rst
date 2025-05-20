@@ -28,6 +28,7 @@ Others materials
 
 - DB preparation summary (MANE v1.4): `[Fusion v5] preferred transcriptome fusion v4 -> v5 db update (MANE v0.95 -> v1.4) <https://actg.atlassian.net/browse/ABIE-1012>`_
 - See the detailed db-v3.1 documentation here: `My PDF Guide <_static/Fusion_db_prep.steps_db-v3.1.pdf>`_
+- See the executed commands for db-v3.1 transcriptome construction: `Executed commands for DB preparation steps <_static/Fusion_db_ref_transcript_v5_draft.pdf>`_
 
 ----
 
