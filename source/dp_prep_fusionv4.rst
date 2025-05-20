@@ -80,12 +80,14 @@ Workflows
     :alt: DB preparation part I
 
 .. image:: _img/DB-v3.1_steps_5-8.png
-    :width: 1000px
+    :width: 600px
+    :scale: 120%
     :align: center
     :alt: DB preparation part II
 
 .. image:: _img/DB-v3.1_steps_9-11.png
-    :width: 800px
+    :width: 600px
+    :scale: 120%
     :align: center
     :alt: DB preparation part III
     
