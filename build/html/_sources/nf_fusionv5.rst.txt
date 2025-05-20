@@ -57,6 +57,16 @@ These refers to the files found in the `hybridcapture_fusion_pipeline_nextflow` 
     - ``hybridcapture_fusion_pipeline_nextflow/params/IVTALL-1_arriba_test.json``
     - ``hybridcapture_fusion_pipeline_nextflow/params/fus_illumina_fastq.json``
 
+Workflows
+~~~~~~~~~~~~~~
+.. image:: _img/FusionV5-v0.1-2_workflows.png
+    :width: 600px
+    :align: center
+    :alt: Fusion V5 workflows
+
+-----
+
+
 Processes
 ~~~~~~~~~~~~~~
 
