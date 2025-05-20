@@ -14,9 +14,9 @@ This document records pipeline description, installation and execution
 Repo
 -----------------
 
-- `Nextflow Fusion V5 pipeline <https://github.com/ACTGenomics/hybridcapture_fusion_pipeline_nextflow>`
-- `Docker image construction for Fusion V4-based nextflow pipeline <https://github.com/ACTGenomics/Torrent_FUSION_calling.git>`
-- `Docker image construction for Arriba-based nextflow pipeline <https://github.com/ACTGenomics/fusion_pipeline_env>`
+- `Nextflow Fusion V5 pipeline <https://github.com/ACTGenomics/hybridcapture_fusion_pipeline_nextflow>`_
+- `Docker image construction for Fusion V4-based nextflow pipeline <https://github.com/ACTGenomics/Torrent_FUSION_calling.git>`_
+- `Docker image construction for Arriba-based nextflow pipeline <https://github.com/ACTGenomics/fusion_pipeline_env>`_
 
 -----------------
 Docker Image
@@ -30,7 +30,7 @@ Others materials
 -----------------
 
 - Dev. environment: `Fusion dev. environment development <https://actg.atlassian.net/browse/ABIE-977>; Dev. image sumamry <https://actg.atlassian.net/browse/ABIE-993>`_
-- Comparison study - Caller evalutaion: `Workflow comparison study <https://actg.atlassian.net/browse/ABIE-907>; `_
+- Comparison study - Caller evalutaion: `Workflow comparison study <https://actg.atlassian.net/browse/ABIE-907>`_
 - Design document - Fusion V4: `20240109_actfusion_v4_amplicon_workflow_ST.v0.28.0.pptx <https://actgenomics-my.sharepoint.com/:p:/p/yufenghuang/ETgxdTAFgUNLpYgrhERNdbMBU8HbGUqji5q6WKK-UmKrlQ?e=coyvwP>`_
 - Dev. documents and records - Fusion V4: `V4_Final <https://actgenomics-my.sharepoint.com/:f:/p/yufenghuang/Eif-bxfsRuhNux2LYcluv7IBs0WAkjKUioDo8mivXrKljQ?e=bCIrwt>`_
 
@@ -144,14 +144,17 @@ The config fields for the Arriba-based workflow
 - **blacklist_tsv**: the blacklist curated by arriba (GRCh38)
 - **known_fusions_tsv**: the known fusions curated by arriba (GRCh38)
 - **protein_domains_gff3**: the protein domain file curated by arriba (GRCh38)
+
 Remark:
-- Arriba reference files download 
-  ```
-  # public image for arriba workflow (https://hub.docker.com/r/uhrigs/arriba/tags)
-  docker pull uhrigs/arriba:2.4.0
-  # download reference "GRCh38+RefSeq" (local directory: /mnt/RD_Develop/sandyteng/FusionCaptureTools/refdb_arriba/)
-  docker run --rm -v /mnt/RD_Develop/sandyteng/FusionCaptureTools/refdb_arriba/:/references uhrigs/arriba:2.4.0 download_references.sh GRCh38+RefSeq
-  ```
+- Reference files download (Arriba-based workflow)
+
+.. code-block:: console
+
+    # public image for arriba workflow (https://hub.docker.com/r/uhrigs/arriba/tags)
+    docker pull uhrigs/arriba:2.4.0
+    
+    # download reference "GRCh38+RefSeq" (local directory: /mnt/RD_Develop/sandyteng/FusionCaptureTools/refdb_arriba/)
+    docker run --rm -v /mnt/RD_Develop/sandyteng/FusionCaptureTools/refdb_arriba/:/references uhrigs/arriba:2.4.0 download_references.sh GRCh38+RefSeq
 
 ----
 
@@ -162,6 +165,7 @@ Execution
 Server should already have native nextflow installed, if not uses conda to create a Nextflow run environment
 
 .. code-block:: console
+
     ### The following commands are copied from the latest sequencing run "AANB01_507" (ref. issue: https://actg.atlassian.net/browse/ABIE-1024)
 
     # Execute Fusion V4-based pipeline with v0.95 db files (same db files for the amplicon-based workflow)
@@ -178,3 +182,9 @@ Server should already have native nextflow installed, if not uses conda to creat
     nextflow run /mnt/RD_Develop/sandyteng/ACTFusionV5/repo_dev/hybridcapture_fusion_pipeline_nextflow/Workflow_docker_arriba.nf \
         -params-file /mnt/RD_Develop/sandyteng/ACTFusionV5/nextflow/testparams/param.ACTFusion_V5_AANB01_507-arriba-based.v0.1.json \
         -c /mnt/RD_Develop/sandyteng/ACTFusionV5/repo_dev/hybridcapture_fusion_pipeline_nextflow/dockerconfigs/arriba_localdocker.config 
+
+--------------------
+Conclusion
+--------------------
+
+This completes the instructions for running Fusion V5 pipelines.

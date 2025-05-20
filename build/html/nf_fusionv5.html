@@ -21,7 +21,8 @@
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to fusion_handover’s documentation!" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,24 +44,24 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Nextflow Fusion V5 pipeline handover</a><ul>
-<li><a class="reference internal" href="#purpose">Purpose</a></li>
-<li><a class="reference internal" href="#repo">Repo</a></li>
-<li><a class="reference internal" href="#docker-image">Docker Image</a></li>
-<li><a class="reference internal" href="#others-materials">Others materials</a></li>
-<li><a class="reference internal" href="#files">Files</a><ul>
-<li><a class="reference internal" href="#processes">Processes</a></li>
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Nextflow Fusion V5 pipeline handover</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#purpose">Purpose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#repo">Repo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-image">Docker Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#others-materials">Others materials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#files">Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#processes">Processes</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#prepare-params-file">Prepare params file</a></li>
-<li><a class="reference internal" href="#configs-fields">Configs fields</a></li>
-<li><a class="reference internal" href="#execution">Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prepare-params-file">Prepare params file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configs-fields">Configs fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#execution">Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
 </ul>
 </li>
 </ul>
-</div>
+
         </div>
       </div>
     </nav>
@@ -95,9 +96,9 @@
 <section id="repo">
 <h2>Repo<a class="headerlink" href="#repo" title="Permalink to this heading"></a></h2>
 <ul class="simple">
-<li><p><cite>Nextflow Fusion V5 pipeline &lt;https://github.com/ACTGenomics/hybridcapture_fusion_pipeline_nextflow&gt;</cite></p></li>
-<li><p><cite>Docker image construction for Fusion V4-based nextflow pipeline &lt;https://github.com/ACTGenomics/Torrent_FUSION_calling.git&gt;</cite></p></li>
-<li><p><cite>Docker image construction for Arriba-based nextflow pipeline &lt;https://github.com/ACTGenomics/fusion_pipeline_env&gt;</cite></p></li>
+<li><p><a class="reference external" href="https://github.com/ACTGenomics/hybridcapture_fusion_pipeline_nextflow">Nextflow Fusion V5 pipeline</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ACTGenomics/Torrent_FUSION_calling.git">Docker image construction for Fusion V4-based nextflow pipeline</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ACTGenomics/fusion_pipeline_env">Docker image construction for Arriba-based nextflow pipeline</a></p></li>
 </ul>
 </section>
 <section id="docker-image">
@@ -109,7 +110,7 @@ Stable version for Arriba-based pipeline: <a class="reference external" href="ht
 <h2>Others materials<a class="headerlink" href="#others-materials" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>Dev. environment: <a class="reference external" href="https://actg.atlassian.net/browse/ABIE-993">Fusion dev. environment development &lt;https://actg.atlassian.net/browse/ABIE-977&gt;; Dev. image sumamry</a></p></li>
-<li><p>Comparison study - Caller evalutaion: <a href="#id1"><span class="problematic" id="id2">`</span></a>Workflow comparison study &lt;<a class="reference external" href="https://actg.atlassian.net/browse/ABIE-907">https://actg.atlassian.net/browse/ABIE-907</a>&gt;; <a href="#id3"><span class="problematic" id="id4">`</span></a>_</p></li>
+<li><p>Comparison study - Caller evalutaion: <a class="reference external" href="https://actg.atlassian.net/browse/ABIE-907">Workflow comparison study</a></p></li>
 <li><p>Design document - Fusion V4: <a class="reference external" href="https://actgenomics-my.sharepoint.com/:p:/p/yufenghuang/ETgxdTAFgUNLpYgrhERNdbMBU8HbGUqji5q6WKK-UmKrlQ?e=coyvwP">20240109_actfusion_v4_amplicon_workflow_ST.v0.28.0.pptx</a></p></li>
 <li><p>Dev. documents and records - Fusion V4: <a class="reference external" href="https://actgenomics-my.sharepoint.com/:f:/p/yufenghuang/Eif-bxfsRuhNux2LYcluv7IBs0WAkjKUioDo8mivXrKljQ?e=bCIrwt">V4_Final</a></p></li>
 </ul>
@@ -236,27 +237,50 @@ A custom script to generate fusionv5.params.json, given the sample.info.csv, fas
 <li><p><strong>protein_domains_gff3</strong>: the protein domain file curated by arriba (GRCh38)</p></li>
 </ul>
 <p>Remark:
-- Arriba reference files download</p>
-<blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">`</span>
-<span class="pre">#</span> <span class="pre">public</span> <span class="pre">image</span> <span class="pre">for</span> <span class="pre">arriba</span> <span class="pre">workflow</span> <span class="pre">(https://hub.docker.com/r/uhrigs/arriba/tags)</span>
-<span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">uhrigs/arriba:2.4.0</span>
-<span class="pre">#</span> <span class="pre">download</span> <span class="pre">reference</span> <span class="pre">&quot;GRCh38+RefSeq&quot;</span> <span class="pre">(local</span> <span class="pre">directory:</span> <span class="pre">/mnt/RD_Develop/sandyteng/FusionCaptureTools/refdb_arriba/)</span>
-<span class="pre">docker</span> <span class="pre">run</span> <span class="pre">--rm</span> <span class="pre">-v</span> <span class="pre">/mnt/RD_Develop/sandyteng/FusionCaptureTools/refdb_arriba/:/references</span> <span class="pre">uhrigs/arriba:2.4.0</span> <span class="pre">download_references.sh</span> <span class="pre">GRCh38+RefSeq</span>
-<span class="pre">`</span></code></p>
-</div></blockquote>
+- Reference files download (Arriba-based workflow)</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>public<span class="w"> </span>image<span class="w"> </span><span class="k">for</span><span class="w"> </span>arriba<span class="w"> </span>workflow<span class="w"> </span><span class="o">(</span>https://hub.docker.com/r/uhrigs/arriba/tags<span class="o">)</span>
+<span class="go">docker pull uhrigs/arriba:2.4.0</span>
+
+<span class="gp"># </span>download<span class="w"> </span>reference<span class="w"> </span><span class="s2">&quot;GRCh38+RefSeq&quot;</span><span class="w"> </span><span class="o">(</span><span class="nb">local</span><span class="w"> </span>directory:<span class="w"> </span>/mnt/RD_Develop/sandyteng/FusionCaptureTools/refdb_arriba/<span class="o">)</span>
+<span class="go">docker run --rm -v /mnt/RD_Develop/sandyteng/FusionCaptureTools/refdb_arriba/:/references uhrigs/arriba:2.4.0 download_references.sh GRCh38+RefSeq</span>
+</pre></div>
+</div>
 </section>
 <hr class="docutils" />
 <section id="execution">
 <h2>Execution<a class="headerlink" href="#execution" title="Permalink to this heading"></a></h2>
 <p>Server should already have native nextflow installed, if not uses conda to create a Nextflow run environment</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span><span class="c1">## The following commands are copied from the latest sequencing run &quot;AANB01_507&quot; (ref. issue: https://actg.atlassian.net/browse/ABIE-1024)</span>
+
+<span class="gp"># </span>Execute<span class="w"> </span>Fusion<span class="w"> </span>V4-based<span class="w"> </span>pipeline<span class="w"> </span>with<span class="w"> </span>v0.95<span class="w"> </span>db<span class="w"> </span>files<span class="w"> </span><span class="o">(</span>same<span class="w"> </span>db<span class="w"> </span>files<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>amplicon-based<span class="w"> </span>workflow<span class="o">)</span>
+<span class="go">nextflow run /mnt/RD_Develop/sandyteng/ACTFusionV5/repo_dev/hybridcapture_fusion_pipeline_nextflow/Workflow_docker_illumina.nf \</span>
+<span class="go">    -params-file /mnt/RD_Develop/sandyteng/ACTFusionV5/nextflow/testparams/param.ACTFusion_V5_AANB01_507-fusionv4-based.v0.1.json \</span>
+<span class="go">    -c /mnt/RD_Develop/sandyteng/ACTFusionV5/repo_dev/hybridcapture_fusion_pipeline_nextflow/dockerconfigs/fusion_multi_localdocker.v9.20241125.v0.23.0.config</span>
+
+<span class="gp"># </span>Execute<span class="w"> </span>Fusion<span class="w"> </span>V4-based<span class="w"> </span>pipeline<span class="w"> </span>with<span class="w"> </span>v1.4<span class="w"> </span>db<span class="w"> </span>files<span class="w"> </span><span class="o">(</span>db-v3.1,<span class="w"> </span>see<span class="w"> </span>issue:<span class="w"> </span>https://actg.atlassian.net/browse/ABIE-1012<span class="w"> </span><span class="k">for</span><span class="w"> </span>db<span class="w"> </span>construction<span class="o">)</span>
+<span class="go">nextflow run /mnt/RD_Develop/sandyteng/ACTFusionV5/repo_dev/hybridcapture_fusion_pipeline_nextflow/Workflow_docker_illumina.nf \</span>
+<span class="go">    -params-file /mnt/RD_Develop/sandyteng/ACTFusionV5/nextflow/testparams/param.ACTFusion_V5_AANB01_507-fusionv4-based.v0.1-db-v3.1.json \</span>
+<span class="go">    -c /mnt/RD_Develop/sandyteng/ACTFusionV5/nextflow/repo_code_v1.4_dbtest_0414.2025/dockerconfigs/fusion_multi_localdocker.v9.20241125.v0.23.0_v1.4.MANE.transcriptome.v3-1.config</span>
+
+<span class="gp"># </span>Execute<span class="w"> </span>Arriba-based<span class="w"> </span>pipeline
+<span class="go">nextflow run /mnt/RD_Develop/sandyteng/ACTFusionV5/repo_dev/hybridcapture_fusion_pipeline_nextflow/Workflow_docker_arriba.nf \</span>
+<span class="go">    -params-file /mnt/RD_Develop/sandyteng/ACTFusionV5/nextflow/testparams/param.ACTFusion_V5_AANB01_507-arriba-based.v0.1.json \</span>
+<span class="go">    -c /mnt/RD_Develop/sandyteng/ACTFusionV5/repo_dev/hybridcapture_fusion_pipeline_nextflow/dockerconfigs/arriba_localdocker.config</span>
+</pre></div>
+</div>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading"></a></h2>
+<p>This completes the instructions for running Fusion V5 pipelines.</p>
 </section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to fusion_handover’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 
