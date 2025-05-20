@@ -13,6 +13,7 @@ This document provides a basic understanding abount ACTFusion V4/V5.
    
    nf_fusionv5
    dp_prep_fusionv4
+   pipeline_utilities
 
 Indices and tables
 ==================
