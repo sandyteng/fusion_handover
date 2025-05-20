@@ -101,7 +101,7 @@ Tools
     - * indicates that some of the tools are available within image 'actgenomics/fusion_dev:v0.6'
 
 .. code-block:: console
-    
+
     +--------+-------+--------------------------------------------------------------------------------------------------------------------+
     | No.    | Image | Tool(s)                                                                                                           |
     +--------+-------+--------------------------------------------------------------------------------------------------------------------+
@@ -147,6 +147,30 @@ Config Files
     /mnt/RD_Develop/sandyteng/ACTFusionV5/nextflow/repo_code_v1.4_dbtest_0414.2025/dockerconfigs/fusion_multi_localdocker.v9.20241125.v0.23.0.config
 
 ----
+
+----------------------
+Area for improvements
+----------------------
+- **DB-update (Remaining tasks)**
+    - V0.95 Probe annotation 
+        -   Concept
+            -   Map 1039 probe regions to v0.95 pseudo transcriptome (Fusion V4 transcriptome)
+        -   Implementation 
+            -   Modify Steps 8-0-a to 8-0-c (loci file annotation), follow the “Fusion db_prep.steps_db-v3.1.docx” (ABIE-1012)
+
+    - V1.4 Kinase file check (update current DB-v3.1 to DB-v3.2)
+        -   Concept
+            -   Check 26 MANE Select v1.4 transcripts to protein sequences mapping  (Bug: BRAF; db-v3.1 current include 'MANE v1.4 Plus clinical (== MANE v0.95 MANE Select)' BRAF ('ENST00000644969.2'), need to replace it with the 'MANE v1.4 Select' transcript: 'ENST00000646891.2')
+        -   Implementation
+            -   Review the 26 kinase sequences (transcript id, protein id) manually curated in step 10 in `My PDF Guide <_static/Fusion_db_prep.steps_db-v3.1.pdf>`_
+    
+    - V1.4 Whitelist update
+        - Concept
+            -   Update whitelist: (modify the probe pair configuration file)
+                -   AR:2,3,4 (v0.95 MANE Select) to AR:2,3 (v1.4 MANE Select) 
+                -   BRAF:19-BRAF:11 (v0.95 MANE Select) BRAF:18-BRAF:10 (v1.4 MANE Select)
+        - Implementation
+            -   Review step 11 in `My PDF Guide <_static/Fusion_db_prep.steps_db-v3.1.pdf>`_
 
 --------------------
 Conclusion
