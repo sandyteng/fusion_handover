@@ -41,7 +41,7 @@ If the 'sandyteng/pseudogene_sandy:v0.0.1' is not available, one can use the 'ac
 
 .. code-block:: console
 
-    container = 'docker.io/sandyteng/pseudogene_sandy:v1.0.0'
+    container = 'docker.io/actgenomics/pseudogene_sandy:v1.0.0'
 
 ----
 
@@ -49,7 +49,7 @@ If the 'sandyteng/pseudogene_sandy:v0.0.1' is not available, one can use the 'ac
 Others materials
 -----------------
 
-- Design document - Pseudogene detection: `pseudogene identification.pptx <https://actgenomics-my.sharepoint.com/:p:/p/sandyteng/EbqdP70a7EVHlz_HK0YIStIBxZMUdUx3thEsO87q4qTk_w?e=D8UMBH>`_
+- Design document - Pseudogene detection: `pseudogene.identification.pdf <_static/pseudogene.identification.pdf>`_
 
 ----
 
@@ -74,4 +74,4 @@ Server should already have native nextflow installed, if not uses conda to creat
 Conclusion
 --------------------
 
-This completes the instructions for running Fusion V5 pipelines.
+This completes the instructions for running Pseudogene detection pipelines.
