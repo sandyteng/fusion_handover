@@ -34,7 +34,7 @@ Docker Image
 -----------------
 
 Stable version for Pseudogene detection pipeline: `sandyteng/pseudogene_sandy:v0.0.1 <https://hub.docker.com/repository/docker/sandyteng/pseudogene_sandy/general>`_
-Backup image (identical to 'sandyteng/pseudogene_sandy:v0.0.1'): `actgenomics/pseudogene_sandy:v0.0.1 <https://hub.docker.com/repository/docker/actgenomics/pseudogene_sandy/general>`
+Backup image (identical to 'sandyteng/pseudogene_sandy:v0.0.1'): `actgenomics/pseudogene_sandy:v0.0.1 <https://hub.docker.com/repository/docker/actgenomics/pseudogene_sandy/general>`_
 
 Remark:
 If the 'sandyteng/pseudogene_sandy:v0.0.1' is not available, one can use the 'actgenomics/pseudogene_sandy:v0.0.1' instead (Modify 'container' in the configuration file).
@@ -69,7 +69,9 @@ Server should already have native nextflow installed, if not uses conda to creat
         -c /mnt/RD_Develop/sandyteng/workdir/repo_test/Pseudogene_detection/pseudogene_localdocker.config
 
     # To-do (PA031(hg19), Onco2M7(hg19))
-
+    ### 64 G config: 
+    /mnt/BI3/Team_workdir/sandyteng_workdir/PseudoGene_pipeline/pseudogene_localdocker.giant.2.config 
+    
 --------------------
 Conclusion
 --------------------
