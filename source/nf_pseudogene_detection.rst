@@ -68,7 +68,7 @@ Server should already have native nextflow installed, if not uses conda to creat
         -params-file /mnt/RD_Develop/sandyteng/workdir/repo_test/testparams/PA039_GRCh38.json \
         -c /mnt/RD_Develop/sandyteng/workdir/repo_test/Pseudogene_detection/pseudogene_localdocker.config
 
-    # Execute the pipeline to classify PA031(hg19) mplicon sequences
+    # Execute the pipeline to classify PA031(hg19) amplicon sequences
     ## 1st attempt (32 G config)
     nextflow run /mnt/RD_Develop/sandyteng/workdir/repo_test/Pseudogene_detection/main.nf \
         -params-file /mnt/RD_Develop/sandyteng/workdir/repo_test/testparams/PA031_hg19.json \
@@ -84,7 +84,12 @@ Server should already have native nextflow installed, if not uses conda to creat
         -params-file /mnt/RD_Develop/sandyteng/workdir/repo_test/testparams/PA031_hg19.json \
         -c /mnt/RD_Develop/sandyteng/workdir/repo_test/testconfig/pseudogene_localdocker.giant.3.config -resume
 
-    # To-do (Onco2M7(hg19))
+    # Execute the pipeline to classify Onco2M7(hg19) amplicon sequences
+    ## 1st attempt (32 G config)
+    nextflow run /mnt/RD_Develop/sandyteng/workdir/repo_test/Pseudogene_detection/main.nf \
+    -params-file /mnt/RD_Develop/sandyteng/workdir/repo_test/testparams/Onco2M7_hg19.json \
+    -c /mnt/RD_Develop/sandyteng/workdir/repo_test/Pseudogene_detection/pseudogene_localdocker.huge.config
+
     ### 64 G config: 
     /mnt/BI3/Team_workdir/sandyteng_workdir/PseudoGene_pipeline/pseudogene_localdocker.giant.2.config 
     ### 128 G config 
