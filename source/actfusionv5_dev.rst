@@ -125,6 +125,12 @@ ACTFusion V5 workflow execution summary
      - Sequencing run analysis 
      - AANB01_507 (8 samples) (GRCh38+RefSeq)
 
+ACTFusion V5 workflow execution log (commands & execution screenshots)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- `Pipeline-logs-gap-analysis.pdf <_static/Pipeline-logs-gap-analysis.pdf>`_
+- `Pipeline-logs.clean.pdf <_static/Pipeline-logs.clean.pdf>`_
+
 Local nextflow output directories
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. code-block:: console
