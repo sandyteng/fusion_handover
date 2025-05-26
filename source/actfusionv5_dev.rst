@@ -158,6 +158,22 @@ Local nextflow output directories
 
     18 directories
 
+---------------------
+Other Dev. Documents
+---------------------
+
+- `20241230_fusion_v4_tool_comparison.pdf <_static/20241230_fusion_v4_tool_comparison.pdf>`_
+- `20250115_Arriba_algo_breakpoint.pdf <_static/20250115_Arriba_algo_breakpoint.pdf>`_
+- `20250221_CeGaT_workflow_summary.pdf <_static/20250221_CeGaT_workflow_summary.pdf>`_
+- `20250324_fusion_v5_SampleQC.pdf <_static/20250324_fusion_v5_SampleQC.pdf>`_
+- `20250324_fusion_v5_gene_quantification.pdf <_static/20250324_fusion_v5_gene_quantification.pdf>`_
+- `20250324_fusion_v5_on-target_count.pdf <_static/20250324_fusion_v5_on-target_count.pdf>`_
+- `20250415_fusion_v5_MANE_0.95_to_1.4.pdf <_static/20250415_fusion_v5_MANE_0.95_to_1.4.pdf>`_
+- `20250501_fusion_v5_AANB01_504.pdf <_static/20250501_fusion_v5_AANB01_504.pdf>`_
+- `20250508_fusion_v5_db-v3.1_summary.pdf <_static/20250508_fusion_v5_db-v3.1_summary.pdf>`_
+- `20250509_fusion_v5_AANB01_504.pdf <_static/20250509_fusion_v5_AANB01_504.pdf>`_
+- `20250514_fusion_v5_AANB01_507.pdf <_static/20250514_fusion_v5_AANB01_507.pdf>`_
+
 --------------------
 Conclusion
 --------------------
