@@ -125,6 +125,33 @@ ACTFusion V5 workflow execution summary
      - Sequencing run analysis 
      - AANB01_507 (8 samples) (GRCh38+RefSeq)
 
+Local nextflow output directories
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. code-block:: console
+
+    # Local directories
+    /mnt/RD_Develop/sandyteng/ACTFusionV5/nextflow_outdir/
+    ├── 20250325_PA043ANA_IVTALL-1_arriba_test
+    ├── 20250326_PA043ANA_IVTRNA_arriba_test
+    ├── 20250326_PA043ANA_IVTRNA_fusionv4_test
+    ├── 20250326_Twist_8_NextSeq_samples_arriba_test
+    ├── 20250328_ACTFusion_v4_81-IVTRNA-240906-300x_v0.1_arriba_test
+    ├── 20250328_ACTFusion_v4_81-IVTRNA-240906-300x_v0.1_fusionv4_test
+    ├── 20250414_ACTFusion_v4_81-IVTRNA-240906-300x_v0.1_fusionv4_MANE_v1.4_config_test
+    ├── 20250416_ACTFusion_v4_81-IVTRNA-240906-300x_v0.1_fusionv4_MANE_v1.4_config_testv1
+    ├── 20250418_ACTFusion_v4_81-IVTRNA-240906-300x_v0.1_fusionv4_MANE_v1.4_config_testv2
+    ├── 20250421_ACTFusion_v4_81-IVTRNA-240906-300x_v0.1_fusionv4_MANE_v1.4_config_testv3
+    ├── 20250423_ACTFusion_v4_81-IVTRNA-240906-300x_v0.1_fusionv4_MANE_v1.4_config_testv3-1
+    ├── 20250423_syn_exonskipping_seq-2-exons_v0.1_fusionv4_MANE_v1.4_config_testv3
+    ├── 20250428_AANB01_504-fusionv4-based_16_sample
+    ├── 20250430_AANB01_504-arriba-based_16_sample
+    ├── 20250505_AANB01_504-fusionv4-db-v3.1-based_16_sample
+    ├── 20250512_AANB01_507-arriba-based_8_sample
+    ├── 20250512_AANB01_507-fusionv4-based_8_sample
+    └── 20250512_AANB01_507-fusionv4-db-v3.1-based_8_sample
+
+    18 directories
+
 --------------------
 Conclusion
 --------------------
