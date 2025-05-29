@@ -93,6 +93,141 @@ Workflows
     
 -----
 
+----------------------------
+Executed commands (db-v3.1)
+----------------------------
+
+.. code-block:: console
+
+    # !/bin/bash
+    # code summary for db-v3.1 preparation
+
+    ### Steps 1-2 download required files
+    # link (mane 1.4): https://ftp.ncbi.nlm.nih.gov/refseq/MANE/MANE_human/release_1.4/
+    # link (gencode): http://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_47/
+    # local_mane_dir="/mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/mane_v1.4/" # local MANE v1.4 db directory
+    # local_gencode_dir="/mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/gencode_v47/" # local GENCODE v47 db directory
+
+    ### Step 1
+    # download MANE v1.4 source files 
+    mkdir -p mane_v1.4 && cd mane_v1.4
+    wget -e robots=off -r -np --no-check-certificate "https://ftp.ncbi.nlm.nih.gov/refseq/MANE/MANE_human/release_1.4/"
+    # move 1.4 files to another folder
+    rsync -av ftp.ncbi.nlm.nih.gov/refseq/MANE/MANE_human/release_1.4 OpenDB_MANE_human_v1.4
+    rm -rf ftp.ncbi.nlm.nih.gov
+    # mane v1.4 folder
+    mkdir ./OpenDB_MANE_human_v1.4/derived/
+
+    ### Step 2
+    # derived files generation 
+    ## namemap file
+    zcat ./OpenDB_MANE_human_v1.4/release_1.4/MANE.GRCh38.v1.4.summary.txt.gz > ./OpenDB_MANE_human_v1.4/derived/MANE.GRCh38.v1.4.summary.txt
+
+    awk -F"\t" '{if($10 == "MANE Select")print $8"\t"$2"\t"$4"\t"$6}' ./OpenDB_MANE_human_v1.4/derived/MANE.GRCh38.v1.4.summary.txt > ./OpenDB_MANE_human_v1.4/derived/MANE.GRCh38.v1.4.summary.namemap
+
+    ## gff file generation
+    zcat ./mane_v1.4/OpenDB_MANE_human_v1.4/release_1.4/MANE.GRCh38.v1.4.ensembl_genomic.gff.gz > ./mane_v1.4/OpenDB_MANE_human_v1.4/derived/MANE.GRCh38.v1.4.ensembl_genomic.gff
+
+    ## transcript list generation 
+    mkdir -p ./Output_Final/
+    awk '{print $1}' ./OpenDB_MANE_human_v1.4/derived/MANE.GRCh38.v1.4.summary.namemap > ./Output_Final/PA053_ACTFusionV5_PseudoIntron_MANE-v1.4_GENCODE-r47_capture-v1.0_GRCh38.20250407.transcript.MANE.list
+
+    # download gencode v47 and move the files to a local folder “OpenDB_GENCODE_human_r47”
+    wget -e robots=off -r -np http://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_47/
+    rsync -av ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_47/ OpenDB_GENCODE_human_r47
+    rm -rf ftp.ebi.ac.uk
+    mkdir ./OpenDB_GENCODE_human_r47/derived/
+
+    ## generate derived files
+    zcat ./OpenDB_GENCODE_human_r47/GRCh38.p14.genome.fa.gz > ./OpenDB_GENCODE_human_r47/derived/GRCh38.p14.genome.fa
+
+    zcat ./OpenDB_GENCODE_human_r47/gencode.v47.annotation.gff3.gz > ./OpenDB_GENCODE_human_r47/derived/gencode.v47.annotation.gff3
+
+    # actgenomics/fusion_dev:v0.6
+    samtools faidx ./OpenDB_GENCODE_human_r47/derived/GRCh38.p14.genome.fa
+
+    ### Step 3: retrieve transcript gff file
+    python3 /mnt/RD_Develop/sandyteng/ACTFusionV5/code/filter_mane_gff.py \
+    -i /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/mane_v1.4/OpenDB_MANE_human_v1.4/release_1.4/MANE.GRCh38.v1.4.ensembl_genomic.gff.gz \
+    -o /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/mane_v1.4/OpenDB_MANE_human_v1.4/release_1.4/MANE.GRCh38.v1.4.ensembl_genomic.transcript.gff
+
+    ### Step 4: gff to bed conversion with ("bedops_2.4.39/bin/convert2bed")
+    /tools/Fusion/convert2bed -i gff -d \
+    < /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/mane_v1.4/OpenDB_MANE_human_v1.4/derived/MANE.GRCh38.v1.4.ensembl_genomic.transcript.gff > /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/mane_v1.4/OpenDB_MANE_human_v1.4/derived/MANE.GRCh38.v1.4.ensembl_genomic.transcript.bed
+
+    bedtools getfasta -name -s \
+    -fi ./gencode_v47/OpenDB_GENCODE_human_r47/derived/GRCh38.p14.genome.fa \
+    -bed ./mane_v1.4/OpenDB_MANE_human_v1.4/derived/MANE.GRCh38.v1.4.ensembl_genomic.transcript.bed \
+    -fo ./mane_v1.4/OpenDB_MANE_human_v1.4/derived/MANE.GRCh38.v1.4.ensembl_genomic.transcript.corrected.strand.fasta
+
+    sed -i 's/([+-])//g' ./mane_v1.4/OpenDB_MANE_human_v1.4/derived/MANE.GRCh38.v1.4.ensembl_genomic.transcript.corrected.strand.fasta
+
+    ### Step 5:  generate plain annotation files
+    python3 /mnt/RD_Develop/sandyteng/ACTFusionV5/code/RefFusion.v2.py \
+    -g /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/mane_v1.4/OpenDB_MANE_human_v1.4/derived/MANE.GRCh38.v1.4.ensembl_genomic.gff \
+    -m /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/mane_v1.4/OpenDB_MANE_human_v1.4/derived/MANE.GRCh38.v1.4.summary.txt \
+    -f /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/mane_v1.4/OpenDB_MANE_human_v1.4/derived/MANE.GRCh38.v1.4.ensembl_genomic.transcript.corrected.strand.fasta \
+    -p /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/mane_v1.4/Output_Final/PA053_ACTFusionV5_PseudoIntron_MANE-v1.4_GENCODE-r47_capturev1.0_GRCh38.20250407.transcript.MANE.only.list \
+    -o /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/Output_MANE_Select/20250407_MANE.r47
+
+    ### Step 8-0-a
+    # obtain mapping exons (pseudo locations on 10*N transcriptome)
+    bash /mnt/RD_Develop/sandyteng/ACTFusionV5/code/candidate_exons_mapping.sh \
+    /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/Output_MANE_Select/20250407_MANE.r47.genome.loci \
+    /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/Output_MANE_Select/20250407_MANE.r47.transcript.loci \
+    /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/mane_v1.4/OpenDB_MANE_human_v1.4/derived/MANE.GRCh38.v1.4.select.and.plus.clinical.namemap \
+    /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/captureprobe_250401/ACTFusionv5_target-region_PartAB_individual_1039.bed \
+    fusionv4.MANE.v1.4.GENCODE.r47 \
+    /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/InhouseDB_Probe/captureprobe_250407_MANE_Select/ \
+    /tools/Fusion
+
+    # extract mapped exons (candidate.exons.transcript.bed) sequences from gencode fasta file (gencode.genome.fa)
+    bedtools getfasta -name -s \
+    -fi /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/Output_MANE_Select/20250407_MANE.r47.fasta \
+    -bed /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/InhouseDB_Probe/captureprobe_250407_MANE_Select/fusionv4.MANE.v1.4.GENCODE.r47.candidate.exons.transcript.bed \
+    -fo /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/InhouseDB_Probe/captureprobe_250407_MANE_Select/probeseq/MANE.GRCh38.v1.4.0407.probe.r47.fasta
+
+    ### Step 8-0-b
+    # probe fasta generation
+    python3 /mnt/RD_Develop/sandyteng/ACTFusionV5/code/Probe_faheader_converter.py \
+    -f /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/InhouseDB_Probe/captureprobe_250407_MANE_Select/probeseq/MANE.GRCh38.v1.4.0407.probe.r47.fasta \
+    -n /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/mane_v1.4/OpenDB_MANE_human_v1.4/derived/MANE.GRCh38.v1.4.select.and.plus.clinical.namemap \
+    -o /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/InhouseDB_Probe/captureprobe_250407_MANE_Select/probeseq/MANE.GRCh38.v1.4.0407.r47.probe.wtprimerlikeheader.fasta.gz
+
+    # unzip fasta.gz
+    gunzip /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/InhouseDB_Probe/captureprobe_250407_MANE_Select/probeseq/MANE.GRCh38.v1.4.0407.r47.probe.wtprimerlikeheader.fasta.gz
+
+    ### Step 8-0-c
+    # perform probe sequences to transcriptome alignment
+    /tools/Fusion/ncbi-blast/bin/blastn \
+    -query /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/InhouseDB_Probe/captureprobe_250407_MANE_Select/probeseq/MANE.GRCh38.v1.4.0407.r47.probe.wtprimerlikeheader.fasta \
+    -subject /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/Output_MANE_Select/20250407_MANE.r47.fasta -outfmt 6 -task blastn-short -dust no \
+    > /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/InhouseDB_Probe/captureprobe_250407_MANE_Select/blastn/20250407_probe.r47.blastn
+
+    # create blastn result for “reverse probe” and concatenate all the alignments
+    cat 20250407_probe.r47.blastn > 20250407_rprobe.r47.blastn
+    sed -i 's/|F|/|R|/' 20250407_rprobe.r47.blastn
+    sed -i 's/mane/rmane/' 20250407_rprobe.r47.blastn
+    cat 20250407_probe.r38.blastn 20250407_rprobe.r38.blastn > 20250407_probe.rprobe.r47.blastn
+
+    # blastn parser (loci annotation)
+    python3 /mnt/RD_Develop/sandyteng/ACTFusionV5/code/blastnparser.py \
+    -if /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/InhouseDB_Probe/captureprobe_250407_MANE_Select/blastn/20250407_probe.rprobe.r47.blastn \
+    -mp /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/mane_v1.4/OpenDB_MANE_human_v1.4/derived/MANE.GRCh38.v1.4.select.and.plus.clinical.namemap \
+    -lf /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/Output_MANE_Select/20250407_MANE.r47.transcript.loci > /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/Output_Loci/250407/PA053_ACTFusionV5_PseudoIntron_MANE-v1.4_GENCODE-r47_capturev1.0_GRCh38.20250407.transcript.MANE.only.blastn.r47.loci
+
+    ### Step 9
+    /tools/Fusion/bwa index /mnt/RD_Develop/sandyteng/ACTFusionV5/db_fusionv5/Output_MANE_Select/20250407_MANE.fasta
+
+    ### Step 10 (manually curated from website)
+
+    ### Step 11
+    python3 /mnt/BI3/Team_workdir/sandyteng_workdir/ACTFusionV4_Torrent/code/update_qcconfig_with_tsv.py \
+    -f /mnt/RD_Develop/sandyteng/ACTFusionV5/test/20250423_fusionv42v5_whitelist_gsppair/testconfigs/filter_internal.QC9.0.mgsp.qcr.0.5-dbv3.v1.4.config \
+    -t /mnt/RD_Develop/sandyteng/ACTFusionV5/test/20250423_fusionv42v5_whitelist_gsppair/data/gsppairs_inclusion_v1.4.txt
+
+-----
+
 -----------------
 Tools
 -----------------
