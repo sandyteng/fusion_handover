@@ -221,7 +221,9 @@ Executed commands (db-v3.1)
 
     ### Step 10 (manually curated from website)
 
-    ### Step 11
+    ### Step 11 ('filter_internal.QC9.0.mgsp.qcr.0.5-dbv3.v1.4.config' was modified in-place)
+    cp /mnt/RD_Develop/sandyteng/ACTFusionV5/test/20250423_fusionv42v5_whitelist_gsppair/testconfigs/filter_internal.QC9.0.mgsp.qcr.0.5.blank.config /mnt/RD_Develop/sandyteng/ACTFusionV5/test/20250423_fusionv42v5_whitelist_gsppair/testconfigs/filter_internal.QC9.0.mgsp.qcr.0.5-dbv3.v1.4.config
+
     python3 /mnt/BI3/Team_workdir/sandyteng_workdir/ACTFusionV4_Torrent/code/update_qcconfig_with_tsv.py \
     -f /mnt/RD_Develop/sandyteng/ACTFusionV5/test/20250423_fusionv42v5_whitelist_gsppair/testconfigs/filter_internal.QC9.0.mgsp.qcr.0.5-dbv3.v1.4.config \
     -t /mnt/RD_Develop/sandyteng/ACTFusionV5/test/20250423_fusionv42v5_whitelist_gsppair/data/gsppairs_inclusion_v1.4.txt
